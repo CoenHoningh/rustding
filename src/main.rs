@@ -4,7 +4,7 @@ use std::{
     fs::File,
     io::{LineWriter, Write},
     iter::repeat_with,
-    os::windows::fs::MetadataExt,
+    os::unix::fs::MetadataExt,
 };
 
 #[derive(FromArgs, PartialEq)]
@@ -36,7 +36,7 @@ fn main() {
             bestand.flush().unwrap_or(());
         };
         if let Ok(meta) = _a.metadata() {
-            dbg!(meta.file_size());
+            meta.size();
         };
     };
 }
